@@ -6,9 +6,7 @@ const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api'
 const api = axios.create({
   baseURL: API_BASE_URL,
   timeout: 300000, // 5 minutes for large file uploads
-  headers: {
-    'Content-Type': 'application/json',
-  },
+  // Removed default Content-Type to allow axios to auto-detect for FormData vs JSON
 })
 
 // Request interceptor
@@ -108,9 +106,6 @@ export const uploadFile = async (endpoint, file, additionalData = {}) => {
   })
   
   return await api.post(endpoint, formData, {
-    headers: {
-      'Content-Type': 'multipart/form-data',
-    },
     responseType: 'blob', // Important for file downloads
     onUploadProgress: (progressEvent) => {
       const percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total)
