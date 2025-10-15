@@ -8,6 +8,18 @@ export default defineConfig({
   },
   build: {
     outDir: 'dist',
-    sourcemap: false
-  }
+    sourcemap: false,
+    // Ensure proper asset handling for Netlify
+    assetsDir: 'assets',
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom', 'react-router-dom'],
+          redux: ['@reduxjs/toolkit', 'react-redux']
+        }
+      }
+    }
+  },
+  // Ensure proper base path
+  base: '/'
 })
