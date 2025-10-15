@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom'
+import { initGA } from './utils/analytics'
 import Header from './components/common/Header'
 import Footer from './components/common/Footer'
 import Home from './pages/Home'
@@ -14,6 +15,11 @@ import PrivacyPolicy from './pages/PrivacyPolicy'
 import TermsOfService from './pages/TermsOfService'
 
 function App() {
+  // Initialize Google Analytics
+  useEffect(() => {
+    initGA();
+  }, []);
+
   return (
     <div className="min-h-screen flex flex-col bg-gray-50">
       <Header />
