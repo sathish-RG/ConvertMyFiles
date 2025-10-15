@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import ToolLayout from '../components/layout/ToolLayout'
+import SEO from '../components/common/SEO'
+import { seoConfig } from '../utils/seoConfig'
 import FileUpload from '../components/common/FileUpload'
 import LoadingSpinner from '../components/common/LoadingSpinner'
 import { splitPDF, resetState } from '../store/slices/pdfSlice'
@@ -45,7 +47,9 @@ const SplitPDFPage = () => {
   }
 
   return (
-    <ToolLayout
+    <>
+      <SEO {...seoConfig.splitPdf} />
+      <ToolLayout
       title="Split PDF"
       description="Extract specific pages from your PDF documents. Choose page ranges to create new PDF files."
       onReset={handleReset}
@@ -135,6 +139,7 @@ const SplitPDFPage = () => {
         </div>
       )}
     </ToolLayout>
+    </>
   )
 }
 

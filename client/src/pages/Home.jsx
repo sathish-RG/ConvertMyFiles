@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { Helmet } from 'react-helmet-async'
+import SEO from '../components/common/SEO'
+import { seoConfig } from '../utils/seoConfig'
 import { 
   FileText, 
   Image, 
@@ -43,46 +44,7 @@ const Home = () => {
 
   return (
     <>
-      {/* SEO Meta Tags */}
-      <Helmet>
-        <title>Free Online PDF & Image Tools - FreeTools</title>
-        <meta name="description" content="Professional PDF and image processing tools online. Compress, convert, split, rotate files for free. No registration required." />
-        <meta name="keywords" content="PDF tools, image converter, file compressor, free online tools, PDF compressor, image optimizer" />
-        
-        {/* Open Graph */}
-        <meta property="og:title" content="Free Online PDF & Image Tools - FreeTools" />
-        <meta property="og:description" content="Professional PDF and image processing tools online. Free, secure, and easy to use." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://yoursite.com" />
-        
-        {/* Twitter */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Free Online PDF & Image Tools" />
-        <meta name="twitter:description" content="Professional PDF and image processing tools online. Free, secure, and easy to use." />
-        
-        {/* Structured Data */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "WebApplication",
-            "name": "FreeTools",
-            "description": "Professional PDF and image processing tools online",
-            "url": "https://yoursite.com",
-            "applicationCategory": "UtilityApplication",
-            "operatingSystem": "Web Browser",
-            "offers": {
-              "@type": "Offer",
-              "price": "0",
-              "priceCurrency": "USD"
-            },
-            "aggregateRating": {
-              "@type": "AggregateRating",
-              "ratingValue": "4.9",
-              "reviewCount": "1250"
-            }
-          })}
-        </script>
-      </Helmet>
+      <SEO {...seoConfig.home} />
 
       <div className="min-h-screen bg-white">
         {/* Hero Section */}

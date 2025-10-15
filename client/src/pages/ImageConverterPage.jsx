@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import ToolLayout from '../components/layout/ToolLayout'
+import SEO from '../components/common/SEO'
+import { seoConfig } from '../utils/seoConfig'
 import FileUpload from '../components/common/FileUpload'
 import LoadingSpinner from '../components/common/LoadingSpinner'
 import BatchImageConverter from '../components/tools/BatchImageConverter'
@@ -57,7 +59,9 @@ const ImageConverterPage = () => {
   }
 
   return (
-    <ToolLayout
+    <>
+      <SEO {...seoConfig.imageConverter} />
+      <ToolLayout
       title="Image Converter"
       description="Convert images between different formats. Support for JPG, PNG, WebP, GIF, and PDF."
       onReset={handleReset}
@@ -189,6 +193,7 @@ const ImageConverterPage = () => {
       {/* Bulk Conversion Mode */}
       {mode === 'bulk' && <BatchImageConverter />}
     </ToolLayout>
+    </>
   )
 }
 

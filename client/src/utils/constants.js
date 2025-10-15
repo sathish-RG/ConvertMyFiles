@@ -47,6 +47,16 @@ export const TOOLS = [
     acceptedFormats: ['PDF']
   },
   {
+    id: 'word-to-pdf',
+    name: 'Word to PDF',
+    description: 'Convert Word documents to PDF format',
+    category: TOOL_CATEGORIES.PDF,
+    path: '/word-to-pdf',
+    icon: '📄',
+    features: ['DOCX to PDF', 'DOC to PDF', 'Formatting preserved'],
+    acceptedFormats: ['DOCX', 'DOC']
+  },
+  {
     id: 'image-converter',
     name: 'Image Converter',
     description: 'Convert images between different formats',
@@ -133,7 +143,8 @@ export const API_ENDPOINTS = {
     COMPRESS: '/pdf/compress',
     SPLIT: '/pdf/split',
     ROTATE: '/pdf/rotate',
-    TO_WORD: '/pdf/pdf-to-word'
+    TO_WORD: '/pdf/pdf-to-word',
+    WORD_TO_PDF: '/pdf/word-to-pdf'
   },
   IMAGE: {
     CONVERT: '/image/convert',
@@ -198,10 +209,10 @@ export const SEO_DATA = {
     description: 'Rotate PDF pages online for free. Fix document orientation with 90, 180, or 270-degree rotation.',
     keywords: 'rotate PDF, fix PDF orientation, PDF rotation tool'
   },
-  'pdf-to-word': {
-    title: 'PDF to Word Converter - Convert PDF to DOCX Online Free',
-    description: 'Convert PDF to Word documents online for free. Maintain formatting and create editable DOCX files.',
-    keywords: 'PDF to Word, PDF to DOCX converter, convert PDF online'
+  'word-to-pdf': {
+    title: 'Word to PDF Converter - Convert DOCX to PDF Online Free',
+    description: 'Convert Word documents to PDF online for free. Support for DOC and DOCX files. Maintain formatting and create professional PDFs.',
+    keywords: 'Word to PDF, DOCX to PDF converter, convert Word to PDF online'
   },
   'image-converter': {
     title: 'Free Image Converter - Convert JPG, PNG, WebP Online',

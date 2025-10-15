@@ -10,7 +10,8 @@ const FileUpload = ({
   onRemoveFile,
   disabled = false,
   multiple = false,
-  className = ""
+  className = "",
+  onFileProcessed
 }) => {
   const [dragActive, setDragActive] = useState(false)
   const [error, setError] = useState(null)
@@ -51,6 +52,11 @@ const FileUpload = ({
       }
       
       onFileSelect(file)
+      
+      // Call onFileProcessed if provided (for immediate processing)
+      if (onFileProcessed) {
+        onFileProcessed(file)
+      }
     }
   }, [onFileSelect, maxSize])
 

@@ -77,6 +77,7 @@ export const endpoints = {
     split: '/pdf/split',
     rotate: '/pdf/rotate',
     convertToWord: '/pdf/pdf-to-word',
+    wordToPdf: '/pdf/word-to-pdf',
   },
   // Image endpoints
   image: {
@@ -93,8 +94,10 @@ export const endpoints = {
 export const uploadFile = async (endpoint, file, additionalData = {}) => {
   const formData = new FormData()
   
-  // Add file to form data
-  if (endpoint.includes('pdf')) {
+  // Add file to form data based on endpoint
+  if (endpoint.includes('word-to-pdf')) {
+    formData.append('word', file)
+  } else if (endpoint.includes('pdf')) {
     formData.append('pdf', file)
   } else if (endpoint.includes('image')) {
     formData.append('image', file)
@@ -130,6 +133,7 @@ export const pdfAPI = {
   split: (file, startPage, endPage) => uploadFile(endpoints.pdf.split, file, { startPage, endPage }),
   rotate: (file, rotation) => uploadFile(endpoints.pdf.rotate, file, { rotation }),
   convertToWord: (file) => uploadFile(endpoints.pdf.convertToWord, file),
+  wordToPdf: (file) => uploadFile(endpoints.pdf.wordToPdf, file),
 }
 
 // Image API functions
@@ -188,6 +192,24 @@ export const validateFile = {
     
     if (!validTypes.includes(file.type)) {
       throw new Error('Please select a valid image file (JPG, PNG, WebP, GIF)')
+    }
+    
+    if (file.size > maxSize) {
+      throw new Error('File size must be less than 50MB')
+    }
+    
+    return true
+  },
+  
+  word: (file) => {
+    const validTypes = [
+      'application/vnd.openxmlformats-officedocument.wordprocessingml.document', // .docx
+      'application/msword' // .doc
+    ]
+    const maxSize = 50 * 1024 * 1024 // 50MB
+    
+    if (!validTypes.includes(file.type)) {
+      throw new Error('Please select a valid Word document (.doc or .docx)')
     }
     
     if (file.size > maxSize) {

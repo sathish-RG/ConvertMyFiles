@@ -13,6 +13,7 @@ const Header = () => {
     { name: 'Split PDF', path: '/split-pdf', description: 'Extract pages' },
     { name: 'Rotate PDF', path: '/rotate-pdf', description: 'Fix orientation' },
     { name: 'PDF to Word', path: '/pdf-to-word', description: 'Convert to DOCX' },
+    { name: 'Word to PDF', path: '/word-to-pdf', description: 'Convert DOCX to PDF' },
   ]
 
   const imageTools = [

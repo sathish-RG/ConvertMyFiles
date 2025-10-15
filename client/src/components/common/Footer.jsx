@@ -82,10 +82,22 @@ const Footer = () => {
                 </button>
               </li>
               <li>
-                <button className="text-gray-400 hover:text-white transition-colors duration-200 flex items-center space-x-2">
+                <Link 
+                  to="/privacy-policy"
+                  className="text-gray-400 hover:text-white transition-colors duration-200 flex items-center space-x-2"
+                >
                   <Shield className="h-4 w-4" />
                   <span>Privacy Policy</span>
-                </button>
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  to="/terms-of-service"
+                  className="text-gray-400 hover:text-white transition-colors duration-200 flex items-center space-x-2"
+                >
+                  <Info className="h-4 w-4" />
+                  <span>Terms of Service</span>
+                </Link>
               </li>
               <li>
                 <button className="text-gray-400 hover:text-white transition-colors duration-200 flex items-center space-x-2">
